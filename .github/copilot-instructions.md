@@ -1,0 +1,5 @@
+- [x] Verify workspace is ready for project scaffolding.
+- [ ] Scaffold the React + Vite project.
+- [ ] Add Netflix-inspired page structure and styling.
+- [ ] Install dependencies and verify compilation.
+- [ ] Create helpful README documentation.
