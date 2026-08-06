@@ -39,10 +39,10 @@ function OnboardingPage() {
 
   const handleContinue = () => {
     if (step === 4 && !validate()) return;
-    // if (step === 2) {
-    //   navigate("/home");
-    //   return;
-    // }
+    if (step === 6) {
+      navigate("/profiles");
+      return;
+    }
     nextStep();
   };
 

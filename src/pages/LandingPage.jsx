@@ -101,7 +101,7 @@ function LandingPage() {
             </div>
             <button
               className="button button"
-              onClick={() => navigate("/onboarding")}
+              onClick={() => navigate("/sign-in")}
             >
               Sign In
             </button>
