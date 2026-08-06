@@ -275,11 +275,9 @@ a {
   gap: 1.75rem;
 }
 
-.logo {
-  color: #e50914;
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+.home-page .logo img {
+  width: 90px;
+  margin: 0;
 }
 
 .nav-links {
