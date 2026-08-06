@@ -97,31 +97,29 @@ function HomePage() {
         </div>
       </nav>
 
-      {hero && (
-        <header
-          className="hero-banner"
-          style={{
-            backgroundImage: `url(${bg})`,
-            backgroundSize: "120%",
-            backgroundPosition: "left center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <div className="hero-gradient" />
+      <header
+        className="hero-banner"
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "120%",
+          backgroundPosition: "left center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="hero-gradient" />
 
-          <div className="hero-details">
-            <h1>Princess : Chapter 20</h1>
-            <p className="hero-overview">a girl</p>
-            <div className="hero-buttons">
-              <button className="button button--primary">▶ Play</button>
-              <button className="button button--ghost">ⓘ More Info</button>
-            </div>
+        <div className="hero-details">
+          <h1>Princess : Chapter 20</h1>
+          <p className="hero-overview">a girl</p>
+          <div className="hero-buttons">
+            <button className="button button--primary">▶ Play</button>
+            <button className="button button--ghost">ⓘ More Info</button>
           </div>
-          <div className="hero-age-badge">
-            <span className="hero-rating">HD</span>
-          </div>
-        </header>
-      )}
+        </div>
+        <div className="hero-age-badge">
+          <span className="hero-rating">HD</span>
+        </div>
+      </header>
 
       <main className="movie-sections">
         {rows.map((row) => (
