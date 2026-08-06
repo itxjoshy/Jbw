@@ -341,7 +341,9 @@ a {
   width: 1.9rem;
   height: 1.9rem;
   border-radius: 0.3rem;
-  background: linear-gradient(135deg, #e50914, #831010);
+  background: url("../assets/pfp.png");
+  background-size: cover;
+  background-position: bottom 90%;
 }
 
 .caret {
