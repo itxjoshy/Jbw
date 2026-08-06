@@ -2177,3 +2177,17 @@ a {
   color: #b3b3b3;
   font-size: 0.9rem;
 }
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga"; /* ← this line is what Safari needs */
+  -webkit-font-smoothing: antialiased;
+}
