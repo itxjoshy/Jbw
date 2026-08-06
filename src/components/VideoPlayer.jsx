@@ -14,6 +14,7 @@ import {
   Captions,
   Maximize,
   Minimize,
+  MoreVertical,
 } from "lucide-react";
 
 function formatTime(seconds) {
@@ -31,6 +32,7 @@ function formatTime(seconds) {
 function VideoPlayer({ src, title, episodeLabel, onClose, onBack }) {
   const videoRef = useRef(null);
   const hideTimeout = useRef(null);
+  const moreMenuRef = useRef(null);
 
   const [playing, setPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
@@ -38,6 +40,7 @@ function VideoPlayer({ src, title, episodeLabel, onClose, onBack }) {
   const [muted, setMuted] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(true);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   useEffect(() => {
     videoRef.current?.play().catch(() => setPlaying(false));
@@ -71,6 +74,18 @@ function VideoPlayer({ src, title, episodeLabel, onClose, onBack }) {
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   });
+
+  // close the mobile overflow menu on outside tap/click
+  useEffect(() => {
+    if (!moreOpen) return;
+    const handleOutside = (e) => {
+      if (moreMenuRef.current && !moreMenuRef.current.contains(e.target)) {
+        setMoreOpen(false);
+      }
+    };
+    document.addEventListener("pointerdown", handleOutside);
+    return () => document.removeEventListener("pointerdown", handleOutside);
+  }, [moreOpen]);
 
   const togglePlay = () => {
     const video = videoRef.current;
@@ -140,17 +155,29 @@ function VideoPlayer({ src, title, episodeLabel, onClose, onBack }) {
     }, 3000);
   };
 
+  // touch devices never fire onMouseMove, so tapping the video
+  // needs to reveal controls first, then act as play/pause on
+  // a second tap once controls are already showing
+  const handleVideoTap = () => {
+    if (controlsVisible) {
+      togglePlay();
+    } else {
+      showControls();
+    }
+  };
+
   return (
     <div
       className="video-player-overlay"
       onMouseMove={showControls}
       onMouseLeave={() => playing && setControlsVisible(false)}
+      onTouchStart={showControls}
     >
       <video
         ref={videoRef}
         className="video-player-el"
         src={src}
-        onClick={togglePlay}
+        onClick={handleVideoTap}
         onTimeUpdate={(e) => setProgress(e.target.currentTime)}
         onLoadedMetadata={(e) => setDuration(e.target.duration)}
         onEnded={() => setPlaying(false)}
@@ -225,14 +252,8 @@ function VideoPlayer({ src, title, episodeLabel, onClose, onBack }) {
             </div>
 
             <div className="video-controls-right">
-              <button aria-label="Help">
-                <HelpCircle size={22} />
-              </button>
               <button aria-label="Next episode">
                 <SkipForward size={22} fill="currentColor" />
-              </button>
-              <button onClick={togglePip} aria-label="Picture in picture">
-                <PictureInPicture2 size={22} />
               </button>
               <button aria-label="Episodes">
                 <ListVideo size={22} />
@@ -240,9 +261,68 @@ function VideoPlayer({ src, title, episodeLabel, onClose, onBack }) {
               <button aria-label="Audio & Subtitles">
                 <Captions size={22} />
               </button>
-              <button onClick={toggleFullscreen} aria-label="Fullscreen">
+
+              {/* desktop-only icons — CSS hides these under 680px */}
+              <button className="video-desktop-only" aria-label="Help">
+                <HelpCircle size={22} />
+              </button>
+              <button
+                className="video-desktop-only"
+                onClick={togglePip}
+                aria-label="Picture in picture"
+              >
+                <PictureInPicture2 size={22} />
+              </button>
+              <button
+                className="video-desktop-only"
+                onClick={toggleFullscreen}
+                aria-label="Fullscreen"
+              >
                 {isFullscreen ? <Minimize size={22} /> : <Maximize size={22} />}
               </button>
+
+              {/* mobile-only overflow menu — CSS shows this only under 680px */}
+              <div className="video-more-wrap" ref={moreMenuRef}>
+                <button
+                  onClick={() => setMoreOpen((v) => !v)}
+                  aria-label="More options"
+                >
+                  <MoreVertical size={22} />
+                </button>
+                {moreOpen && (
+                  <div className="video-more-menu">
+                    <button
+                      onClick={() => setMoreOpen(false)}
+                      aria-label="Help"
+                    >
+                      <HelpCircle size={18} /> Help
+                    </button>
+                    <button
+                      onClick={() => {
+                        togglePip();
+                        setMoreOpen(false);
+                      }}
+                      aria-label="Picture in picture"
+                    >
+                      <PictureInPicture2 size={18} /> Picture in picture
+                    </button>
+                    <button
+                      onClick={() => {
+                        toggleFullscreen();
+                        setMoreOpen(false);
+                      }}
+                      aria-label="Fullscreen"
+                    >
+                      {isFullscreen ? (
+                        <Minimize size={18} />
+                      ) : (
+                        <Maximize size={18} />
+                      )}
+                      Fullscreen
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

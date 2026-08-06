@@ -90,7 +90,7 @@ function SignInPage() {
                   maxLength={6}
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
-                  placeholder="070806"
+                  placeholder="OTP"
                   disabled={loading}
                   required
                 />
