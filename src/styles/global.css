@@ -358,6 +358,9 @@ a {
   align-items: center;
   background: #141414;
   overflow: hidden;
+  background-size: 120%;
+  background-position: "left center";
+  background-repeat: "no-repeat";
 }
 
 .hero-image {
@@ -1785,6 +1788,35 @@ a {
 
 /* ---- landing page responsive ---- */
 @media (max-width: 900px) {
+  .hero-banner {
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    text-align: center;
+    height: 70vh;
+    background-size: cover;
+    background-position: 30% bottom;
+    background-repeat: no-repeat;
+  }
+  .hero-details p {
+    font-size: 0.8rem;
+  }
+  .hero-buttons {
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      360deg,
+      #141414,
+      #141414 20%,
+      rgba(20, 20, 20, 0.411) 35%,
+      rgba(20, 20, 20, 0.15) 48%,
+      transparent 85%
+    );
+  }
   .section-feature,
   .section-feature--reverse {
     flex-direction: column;

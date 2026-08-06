@@ -101,9 +101,6 @@ function HomePage() {
         className="hero-banner"
         style={{
           backgroundImage: `url(${bg})`,
-          backgroundSize: "120%",
-          backgroundPosition: "left center",
-          backgroundRepeat: "no-repeat",
         }}
       >
         <div className="hero-gradient" />
