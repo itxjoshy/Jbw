@@ -28,7 +28,7 @@ function OnboardingPage() {
   const [validation, setValidation] = useState({ email: true, password: true });
   const navigate = useNavigate();
 
-  const nextStep = () => setStep((current) => Math.min(current + 1, 2));
+  const nextStep = () => setStep((current) => Math.min(current + 1, 6));
   const prevStep = () => setStep((current) => Math.max(current - 1, 1));
   const validate = () => {
     const isEmailValid = email.includes("@");
@@ -39,10 +39,10 @@ function OnboardingPage() {
 
   const handleContinue = () => {
     if (step === 4 && !validate()) return;
-    if (step === 2) {
-      navigate("/home");
-      return;
-    }
+    // if (step === 2) {
+    //   navigate("/home");
+    //   return;
+    // }
     nextStep();
   };
 
