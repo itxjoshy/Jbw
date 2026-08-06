@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bg from "../assets/homehero.png";
 import logo from "../assets/logo.svg";
+import VideoPlayer from "../components/VideoPlayer";
 import {
   fetchTrending,
   fetchPopular,
@@ -121,7 +122,6 @@ function HomePage() {
         }}
       >
         <div className="hero-gradient" />
-
         <div className="hero-details">
           <h1>Princess : Chapter 20</h1>
           <p className="hero-overview">
@@ -131,12 +131,14 @@ function HomePage() {
             her.
           </p>
           <div className="hero-buttons">
-            <button className="button button--primary">▶ Play</button>
+            <button
+              className="button button--primary"
+              onClick={() => navigate("/watch")}
+            >
+              ▶ Play
+            </button>
             <button className="button button--ghost">ⓘ More Info</button>
           </div>
-        </div>
-        <div className="hero-age-badge">
-          <span className="hero-rating">HD</span>
         </div>
       </header>
 

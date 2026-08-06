@@ -10,6 +10,7 @@ import SearchPage from "./pages/SearchPage";
 import MyListPage from "./pages/MyListPage";
 import LoadingPage from "./pages/LoadingPage";
 import SignInPage from "./pages/SignInPage";
+import Watch from "./pages/Watch";
 
 function App() {
   const location = useLocation();
@@ -48,6 +49,7 @@ function App() {
           <Route path="/my-list" element={<MyListPage />} />
           <Route path="/loading" element={<LoadingPage />} />
           <Route path="/sign-in" element={<SignInPage />} />
+          <Route path="/watch" element={<Watch />} />
         </Routes>
       </AnimatePresence>
     </AuthProvider>

@@ -1998,3 +1998,171 @@ a {
     min-height: 100svh;
   }
 }
+
+/* ============================================================
+   VIDEO PLAYER
+   Full-screen overlay for playing a local .mp4. Matches real
+   Netflix desktop layout: a bare back arrow top-left, and a
+   single bottom bar holding seek + play controls + title +
+   a right-side icon cluster (help / next-ep / PiP / episodes /
+   subtitles / fullscreen).
+   ============================================================ */
+
+.video-player-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+}
+
+.video-player-overlay:has(.video-controls.visible) {
+  cursor: default;
+}
+
+.video-player-el {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+.video-controls {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.video-controls.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.video-controls-top {
+  padding: 1rem 1.25rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent);
+}
+
+.video-back-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.video-controls-bottom {
+  padding: 0 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
+}
+
+.video-seek-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.video-seek {
+  flex: 1;
+  height: 3px;
+  accent-color: #e50914;
+  cursor: pointer;
+}
+
+.video-time {
+  color: #d2d2d2;
+  font-size: 0.78rem;
+  min-width: 3rem;
+  text-align: right;
+}
+
+.video-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.video-controls-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.video-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 0 0 auto;
+}
+
+.video-controls-left button,
+.video-controls-right button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 0.2rem;
+  display: grid;
+  place-items: center;
+  position: relative;
+  flex: 0 0 auto;
+  opacity: 0.9;
+}
+
+.video-controls-left button:hover,
+.video-controls-right button:hover {
+  opacity: 1;
+}
+
+.video-skip-btn span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding-top: 0.1rem;
+  pointer-events: none;
+}
+
+.video-back-btn svg,
+.video-play-btn svg {
+  display: block;
+}
+
+.video-now-playing {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-left: 0.5rem;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.video-now-playing strong {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.video-now-playing span {
+  color: #b3b3b3;
+  font-size: 0.9rem;
+}
