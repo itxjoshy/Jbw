@@ -569,7 +569,8 @@ a {
   border: none;
   background: transparent;
   color: #e50914;
-  font-size: 1.1rem;
+  font-size: 4rem;
+  font-weight: 700;
   line-height: 1;
   display: flex;
   align-items: center;
@@ -584,7 +585,7 @@ a {
 }
 
 .row-arrow--left {
-  left: -0.25rem;
+  left: 2rem;
 }
 
 .row-arrow--right {
@@ -627,7 +628,6 @@ a {
 
 .movie-card:hover .movie-poster {
   border-radius: 0.2rem 0.2rem 0 0;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55);
 }
 
 .movie-poster img {
@@ -737,12 +737,25 @@ a {
   padding: 0.7rem 0.8rem 0.85rem;
   background: #181818;
   border-radius: 0 0 0.3rem 0.3rem;
-  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.55);
   z-index: 4;
 }
 
 .movie-card:hover .movie-info {
-  display: block;
+  position: absolute;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 20, 20, 0.356) 0%,
+    rgba(20, 20, 20, 0.39) 15%,
+    rgba(20, 20, 20, 0.411) 35%,
+    rgba(20, 20, 20, 0.596) 60%,
+    rgba(20, 20, 20, 0.781) 80%,
+    rgba(20, 20, 20, 0.836) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  z-index: 5;
+  inset: 0;
 }
 
 .movie-info strong {
@@ -768,7 +781,7 @@ a {
   gap: 0.35rem;
   opacity: 0;
   transition: opacity 0.15s ease;
-  z-index: 2;
+  z-index: 6;
 }
 
 .movie-card:hover .movie-hover-actions {

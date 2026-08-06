@@ -110,7 +110,12 @@ function HomePage() {
 
         <div className="hero-details">
           <h1>Princess : Chapter 20</h1>
-          <p className="hero-overview">a girl</p>
+          <p className="hero-overview">
+            Turning 20 changes everything. Follow Princess as she enters a
+            brand-new season filled with growth, adventures, laughter, and
+            unforgettable moments. Rated ★★★★★ by everyone lucky enough to know
+            her.
+          </p>
           <div className="hero-buttons">
             <button className="button button--primary">▶ Play</button>
             <button className="button button--ghost">ⓘ More Info</button>
