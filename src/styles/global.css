@@ -821,6 +821,17 @@ a {
   align-items: center;
   min-width: 17vw;
   max-width: 17vw;
+  .movie-info {
+    opacity: 0;
+  }
+  .movie-hover-actions {
+    display: none;
+  }
+}
+.movie-card--ranked:hover {
+  transform: scale(1);
+  z-index: 5;
+  transition: transform 0.28s ease 0.35s;
 }
 
 .movie-card--ranked .movie-poster {
