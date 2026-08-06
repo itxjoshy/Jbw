@@ -93,7 +93,7 @@ function HomePage() {
               search
             </span>
           </button>
-          <span className="nav-kids">Kids</span>
+          <span className="nav-kids">Josh</span>
           <button className="icon-button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
