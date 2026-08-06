@@ -67,6 +67,171 @@ a {
 }
 
 /* ============================================
+   ONBOARDING / SIGNUP FLOW
+   ============================================ */
+
+.auth-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.center-panel {
+  min-height: calc(100vh - 72px);
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.onboarding-card {
+  width: min(100%, 960px);
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1rem;
+  padding: 2.5rem;
+}
+
+.step-indicator {
+  color: #e50914;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.feature-list,
+.plan-grid,
+.comparison-table,
+.payment-grid,
+.form-group,
+.form-actions {
+  margin-top: 1.5rem;
+}
+
+.feature-list span,
+.feature-list li {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.plan-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.85rem;
+  padding: 1.25rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.plan-card--selected {
+  border-color: #e50914;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.plan-name {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.plan-price {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.comparison-table {
+  border-radius: 0.85rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.table-row--header {
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 700;
+}
+
+.success-state {
+  text-align: center;
+}
+
+.success-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: #e50914;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border-radius: 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.form-group input.invalid {
+  border-color: #ff6b6b;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field-error {
+  margin: 0.25rem 0 0;
+  color: #ff6b6b;
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.payment-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.9rem;
+  padding: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.payment-card input {
+  accent-color: #e50914;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* ============================================
    NAVBAR
    ============================================ */
 
@@ -183,11 +348,21 @@ a {
 
 .hero-banner {
   position: relative;
-  min-height: 90vh;
+  min-height: 62vh;
   display: flex;
   align-items: center;
   background: #141414;
   overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 62%;
+  height: 100%;
+  background-size: cover;
+  background-position: center top;
 }
 
 .hero-gradient {
@@ -218,7 +393,7 @@ a {
   position: relative;
   z-index: 1;
   padding: 5rem 4% 3rem;
-  max-width: 40rem;
+  max-width: 30rem;
 }
 
 .hero-badge {
@@ -271,9 +446,9 @@ a {
 }
 
 .hero-details p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #d2d2d2;
-  max-width: 40rem;
+  max-width: 28rem;
   margin: 0 0 1.5rem;
   line-height: 1.5;
 }
@@ -365,8 +540,6 @@ a {
    <button className="row-arrow row-arrow--right">‹/›</button></div> */
 .row-wrapper {
   position: relative;
-  max-width: 90%;
-  margin: 0 auto;
 }
 
 .row-cards {
@@ -391,14 +564,18 @@ a {
   border: none;
   background: transparent;
   color: #e50914;
-  font-size: 2rem;
+  font-size: 1.1rem;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.2s ease;
   z-index: 10;
+}
+
+.row-wrapper:hover .row-arrow {
+  opacity: 1;
 }
 
 .row-arrow--left {
@@ -406,7 +583,7 @@ a {
 }
 
 .row-arrow--right {
-  right: -5rem;
+  right: -0.25rem;
 }
 
 /* ============================================
@@ -454,6 +631,18 @@ a {
   object-fit: cover;
   object-position: top;
   display: block;
+}
+
+.movie-n-badge {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.35rem;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.7rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* Inline progress sliver for a title that's partway watched —
