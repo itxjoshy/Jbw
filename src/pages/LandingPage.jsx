@@ -6,7 +6,15 @@ import MovieCard from "../components/MovieCard";
 import SectionFeature from "../components/SectionFeature";
 import logo from "../assets/logo.svg";
 import { faqs } from "../data/faqs";
-import { movies } from "../data/movies";
+import {
+  fetchTrending,
+  fetchPopular,
+  fetchTopRated,
+  fetchUpcoming,
+  fetchByGenre,
+  getImageUrl,
+  GENRES,
+} from "../api/tmdb";
 
 const features = [
   {
@@ -33,6 +41,36 @@ const features = [
 ];
 
 function LandingPage() {
+  const [rows, setRows] = useState([]);
+  useEffect(() => {
+    async function load() {
+      const [
+        trending,
+        popular,
+        topRated,
+        upcoming,
+        action,
+        comedy,
+        romance,
+        scifi,
+      ] = await Promise.all([
+        fetchTrending(),
+        fetchPopular(),
+        fetchTopRated(),
+        fetchUpcoming(),
+        fetchByGenre(GENRES.action),
+        fetchByGenre(GENRES.comedy),
+        fetchByGenre(GENRES.romance),
+        fetchByGenre(GENRES.scifi),
+      ]);
+
+      setRows([
+        { title: "Trending Now", items: trending.results, ranked: true },
+      ]);
+    }
+    load();
+  }, []);
+
   const [scrolled, setScrolled] = useState(false);
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
@@ -127,11 +165,14 @@ function LandingPage() {
               </button>
             </div>
           </div>
-          <div className="row-cards" ref={carouselRef}>
-            {["1", "2", "3", "4", "5"].map((id, index) => {
-              const film = movies.find((item) => item.id === id);
-              return <MovieCard key={id} movie={film} rank={index + 1} />;
-            })}
+          <div className="row-cards landing-row" ref={carouselRef}>
+            {rows[0]?.items.map((movie, index) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                rank={true ? index + 1 : undefined}
+              />
+            ))}
           </div>
         </section>
 

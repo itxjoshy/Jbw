@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import bg from "../assets/homehero.png";
+import logo from "../assets/logo.svg";
 import {
   fetchTrending,
   fetchPopular,
@@ -46,10 +48,6 @@ function HomePage() {
         fetchByGenre(GENRES.scifi),
       ]);
 
-      // pick a random trending title with a backdrop for the hero
-      const withBackdrop = trending.results.filter((m) => m.backdrop_path);
-      setHero(withBackdrop[Math.floor(Math.random() * withBackdrop.length)]);
-
       setRows([
         { title: "Trending Now", items: trending.results, ranked: true },
         { title: "Popular on Netflix", items: popular.results },
@@ -68,7 +66,9 @@ function HomePage() {
     <div className="page home-page">
       <nav className={`app-navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="navbar-left">
-          <div className="logo">NETFLIX</div>
+          <div className="logo">
+            <img src={logo} alt="Netflix" className="logo" />
+          </div>
           <div className="nav-links">
             {["Home", "TV Shows", "Movies", "New & Popular", "My List"].map(
               (link) => (
@@ -101,14 +101,17 @@ function HomePage() {
         <header
           className="hero-banner"
           style={{
-            backgroundImage: `url(${getImageUrl(hero.backdrop_path, "original")})`,
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "120%",
+            backgroundPosition: "left center",
+            backgroundRepeat: "no-repeat",
           }}
         >
           <div className="hero-gradient" />
 
           <div className="hero-details">
-            <h1>{hero.title}</h1>
-            <p className="hero-overview">{hero.overview}</p>
+            <h1>Princess : Chapter 20</h1>
+            <p className="hero-overview">a girl</p>
             <div className="hero-buttons">
               <button className="button button--primary">▶ Play</button>
               <button className="button button--ghost">ⓘ More Info</button>

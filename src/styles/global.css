@@ -21,6 +21,7 @@ html,
 body,
 #root {
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -28,7 +29,11 @@ body {
   background: #141414;
   color: #f5f5f1;
 }
-
+.logo {
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 120px;
+}
 button,
 input,
 select {
@@ -348,7 +353,7 @@ a {
 
 .hero-banner {
   position: relative;
-  min-height: 62vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   background: #141414;
@@ -904,5 +909,890 @@ a {
 
   .row-arrow {
     display: none;
+  }
+}
+
+/* ============================================================
+   MARKETING LANDING PAGE (logged-out homepage)
+   Matches: promo bar -> header -> hero signup -> Trending Now ->
+   More Reasons to Join -> FAQ -> bottom signup -> legal fineprint
+   ============================================================ */
+
+.landing-page {
+  background: #141414;
+  overflow-x: hidden;
+}
+
+/* ---- top promo bar ---- */
+.promo-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(
+    90deg,
+    #5c2fbf 0%,
+    #8c2790 32%,
+    #b0177a 60%,
+    #e50914 100%
+  );
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.promo-bar-icon {
+  flex: 0 0 auto;
+  opacity: 0.9;
+}
+
+/* ---- header, overlaid on hero ---- */
+.marketing-header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 4% 0.9rem;
+}
+
+.marketing-logo {
+  color: #e50914;
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.marketing-signin {
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.marketing-signin:hover {
+  background: #c40812;
+}
+
+/* ---- hero ---- */
+.marketing-hero {
+  position: relative;
+  padding-top: 0;
+}
+
+.marketing-hero-collage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  opacity: 0.75;
+  z-index: 0;
+}
+
+.collage-tile {
+  background-size: cover;
+  background-position: center;
+}
+
+.collage-tile--1 {
+  background: linear-gradient(160deg, #3a2f1e, #0c0a06);
+}
+.collage-tile--2 {
+  background: linear-gradient(160deg, #2e1414, #0a0505);
+}
+.collage-tile--3 {
+  background: linear-gradient(160deg, #1c2e2a, #05100d);
+}
+.collage-tile--4 {
+  background: linear-gradient(160deg, #33241a, #0d0704);
+}
+.collage-tile--5 {
+  background: linear-gradient(160deg, #241c33, #08050d);
+}
+.collage-tile--6 {
+  background: linear-gradient(160deg, #3a1c26, #0d0508);
+}
+
+.marketing-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(
+      ellipse 60% 70% at 50% 45%,
+      rgba(20, 20, 20, 0.55) 0%,
+      rgba(20, 20, 20, 0.88) 60%,
+      #141414 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.25) 18%,
+      rgba(0, 0, 0, 0.35) 75%,
+      #141414 100%
+    );
+}
+
+.marketing-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 5rem;
+  text-align: center;
+}
+
+.marketing-hero-content h1 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.hero-subline {
+  margin: 0 0 1.1rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.hero-prompt {
+  margin: 0 0 0.9rem;
+  font-size: 0.95rem;
+}
+
+.hero-fineprint {
+  margin: 0.6rem 0 0;
+  font-size: 0.78rem;
+  color: #c9c9c9;
+}
+
+.legal-fineprint {
+  max-width: 40rem;
+  margin: 1.25rem auto 3rem;
+  padding: 0 1.5rem;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: #808080;
+  text-align: center;
+}
+
+/* ---- shared signup form (hero + bottom cta) ---- */
+.signup-form {
+  display: flex;
+  gap: 0.6rem;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.signup-input-wrap {
+  flex: 1 1 auto;
+}
+
+.signup-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 0.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.signup-input::placeholder {
+  color: #8c8c8c;
+}
+
+.signup-cta {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.9rem 1.3rem;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.signup-cta:hover {
+  background: #c40812;
+}
+
+/* ---- section title shared by trending / reasons / faq ---- */
+.section-title {
+  max-width: 62rem;
+  margin: 0 auto 0.9rem;
+  padding: 0 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+/* ---- trending now ---- */
+.trending-section {
+  padding: 2.5rem 0 1rem;
+}
+
+.trending-wrapper {
+  position: relative;
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.trending-track {
+  display: flex;
+  gap: 0.7rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+}
+
+.trending-track::-webkit-scrollbar {
+  display: none;
+}
+
+.trending-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(6.5rem, 15vw, 8.75rem);
+  display: flex;
+  align-items: flex-end;
+}
+
+.trending-rank {
+  flex: 0 0 auto;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 800;
+  font-size: 3.6rem;
+  line-height: 1;
+  color: #141414;
+  -webkit-text-stroke: 2px #fff;
+  margin-right: -0.9rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.trending-poster {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 2 / 3;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: flex-end;
+}
+
+.trending-n-badge {
+  position: absolute;
+  top: 0.3rem;
+  left: 0.35rem;
+  color: #e50914;
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.trending-poster-title {
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent);
+}
+
+.trending-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0.25rem;
+  right: -0.25rem;
+  width: 2rem;
+  border: none;
+  background: linear-gradient(90deg, transparent, #141414 55%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- more reasons to join ---- */
+.reasons-section {
+  padding: 2.5rem 0;
+}
+
+.reasons-grid {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.reason-card {
+  position: relative;
+  min-height: 11rem;
+  padding: 1.1rem 1.1rem 1rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(160deg, #1c1e3e 0%, #1f1223 100%);
+  overflow: hidden;
+}
+
+.reason-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.reason-body {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #b0aec2;
+  max-width: 11rem;
+}
+
+.reason-icon {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.8rem;
+  display: grid;
+  place-items: center;
+}
+
+.reason-icon--tv,
+.reason-icon--everywhere {
+  filter: drop-shadow(0 0 10px rgba(255, 70, 130, 0.45));
+}
+
+.reason-icon--download,
+.reason-icon--kids {
+  filter: drop-shadow(0 0 12px rgba(255, 70, 130, 0.5));
+}
+
+/* ---- FAQ ---- */
+.faq-section {
+  padding: 2rem 0 2.5rem;
+}
+
+.faq-list {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.faq-item {
+  background: #2d2d2d;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  text-align: left;
+  padding: 1.1rem 1.3rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.faq-icon {
+  flex: 0 0 auto;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.faq-icon--open {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 1.3rem 1.3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.faq-answer p {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #d2d2d2;
+  max-width: 44rem;
+}
+
+/* ---- bottom CTA (before legal fineprint) ---- */
+.bottom-cta {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 0;
+  text-align: center;
+}
+
+/* ---- landing page responsive ---- */
+@media (max-width: 900px) {
+  .reasons-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .signup-form {
+    flex-direction: column;
+  }
+
+  .signup-cta {
+    justify-content: center;
+  }
+
+  .reasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .marketing-hero-content {
+    padding: 3rem 1.25rem 3.5rem;
+  }
+
+  .trending-rank {
+    font-size: 2.6rem;
+  }
+}
+
+/* ============================================================
+   REAL APP LANDING PAGE
+   Matches the actual component tree:
+   .page.landing-page > .tag, main > .hero-section (.hero-navbar,
+   .hero-section-content > .hero-overlay + .hero-copy > .hero-actions
+   > .input-float), .section-divider, .featured-row (.row-header,
+   .row-cards > MovieCard), SectionFeature (.section-feature,
+   .feature-copy, .feature-card--variant, .feature-visual,
+   .feature-caption), .faq-section (.accordion-list > Accordion),
+   .footer (already styled above).
+
+   NOTE ON FIDELITY: the screenshot shows a compact 4-up grid under
+   "More Reasons to Join". This component instead renders each
+   feature as its own full-width alternating section (image/copy
+   swapping sides), which is a structural difference the CSS alone
+   can't paper over. Below styles that alternating layout so it's
+   consistent with the rest of the page rather than trying to force
+   it back into a grid it doesn't have the markup for. If you want
+   the literal 4-card grid from the screenshot, `features.map(...)`
+   needs to render into a shared grid wrapper instead of stacked
+   <SectionFeature> sections — happy to adjust the JSX for that.
+   ============================================================ */
+
+/* ---- top promo tag/bar ---- */
+.tag {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(
+    90deg,
+    #5c2fbf 0%,
+    #8c2790 32%,
+    #b0177a 60%,
+    #e50914 100%
+  );
+  color: #fff;
+}
+
+.tag p {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ---- hero section ---- */
+.hero-section {
+  position: relative;
+}
+
+.hero-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 4% 0.9rem;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.hero-navbar .logo img {
+  height: 1.7rem;
+  display: block;
+}
+
+.hero-section-content {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../assets/bghero.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #141414;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(
+      ellipse 60% 70% at 50% 45%,
+      rgba(20, 20, 20, 0.5) 0%,
+      rgba(20, 20, 20, 0.86) 60%,
+      #141414 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.2) 20%,
+      rgba(0, 0, 0, 0.35) 78%,
+      #141414 100%
+    );
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  text-align: center;
+}
+
+.hero-copy h1 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.hero-copy > p {
+  margin: 0 0 1.4rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #f5f5f1;
+}
+.landing-row .movie-poster {
+  aspect-ratio: 2/3;
+}
+.landing-row .movie-card:hover {
+  transform: scale(1);
+}
+.landing-row .movie-card:hover .movie-hover-actions,
+.landing-row .movie-card:hover .movie-info {
+  display: none;
+  transform: scale(1);
+}
+.hero-actions {
+  display: flex;
+  gap: 0.6rem;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.faq-bottom.hero-actions {
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* floating-label email input, shared by hero + faq-bottom */
+.input-float {
+  position: relative;
+  flex: 1 1 auto;
+  display: block;
+}
+
+.input-float input {
+  width: 100%;
+  padding: 1.15rem 1rem 0.55rem;
+  border-radius: 0.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.input-float span {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  color: #8c8c8c;
+  pointer-events: none;
+  transition: all 0.15s ease;
+}
+
+.input-float input:focus + span,
+.input-float input:not(:placeholder-shown) + span,
+.input-float--active span {
+  top: 0.62rem;
+  font-size: 0.68rem;
+  color: #b3b3b3;
+}
+
+.input-float input:focus {
+  outline: none;
+  border-color: #fff;
+}
+
+.hero-actions .button--primary {
+  flex: 0 0 auto;
+  padding: 0 1.5rem;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+}
+
+/* ---- section divider ---- */
+.section-divider {
+  height: 2px;
+  max-width: 62rem;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent
+  );
+}
+
+/* ---- featured row (Trending Now) ---- */
+.featured-row {
+  padding: 2.5rem 0 1rem;
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.featured-row .row-header {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.featured-row .row-header > div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.featured-row .row-header .row-arrow {
+  position: static;
+  opacity: 1;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.featured-row .row-header .row-arrow:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Trending posters are portrait one-sheets, not the 16:9 browse
+   thumbnails the base .movie-poster rule assumes — override just
+   for the ranked cards used here. */
+.movie-card--ranked .movie-poster {
+  aspect-ratio: 2 / 3;
+}
+
+/* ---- section feature (alternating "reasons to join" rows) ---- */
+.section-feature {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 3.25rem 1.5rem;
+}
+
+.section-feature--reverse {
+  flex-direction: row-reverse;
+}
+
+.feature-copy {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.feature-copy h2 {
+  margin: 0 0 0.9rem;
+  font-size: clamp(1.6rem, 2.6vw, 2.35rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.feature-copy p {
+  margin: 0;
+  max-width: 26rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #d2d2d2;
+}
+
+.feature-card {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 14rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem;
+  background: linear-gradient(160deg, #1c1e3e 0%, #1f1223 100%);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+.feature-visual {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 4.5rem;
+  filter: drop-shadow(0 0 16px rgba(255, 70, 130, 0.4));
+}
+
+.feature-card--tv .feature-visual::before {
+  content: "📺";
+}
+.feature-card--download .feature-visual::before {
+  content: "⬇️";
+}
+.feature-card--devices .feature-visual::before {
+  content: "📱";
+}
+.feature-card--kids .feature-visual::before {
+  content: "🧒";
+}
+
+.feature-caption {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* ---- FAQ / accordion ---- */
+.faq-section {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3.5rem;
+}
+
+.faq-section > h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.accordion-item {
+  background: #2d2d2d;
+}
+
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  text-align: left;
+  padding: 1.1rem 1.3rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.accordion-trigger span:last-child {
+  flex: 0 0 auto;
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.accordion-panel {
+  overflow: hidden;
+  padding: 0 1.3rem;
+}
+
+.accordion-panel p {
+  margin: 0;
+  padding: 1rem 0 1.3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #d2d2d2;
+  max-width: 44rem;
+}
+
+/* ---- landing page responsive ---- */
+@media (max-width: 900px) {
+  .section-feature,
+  .section-feature--reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .feature-copy p {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .button--primary {
+    padding: 0.9rem 1.5rem;
+  }
+
+  .hero-section-content {
+    min-height: 100svh;
   }
 }
